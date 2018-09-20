@@ -8,7 +8,13 @@ class AddItem extends Component {
 
     handleAddItem = (e) => {
         e.preventDefault();
+
         this.props.add(this.state);
+
+        this.setState({
+            title:'',
+            details: ''
+        })
     }
 
     render () {
