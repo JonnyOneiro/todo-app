@@ -20,11 +20,23 @@ class App extends Component {
         })
     }
 
-    addItem =  (item) => {
+    addItem = (item) => {
         item._id = new Date().getTime();
 
         this.setState({
             list:[item,...this.state.list]
+        });
+    }
+
+    deleteItem = (index) => {
+        const {list} = this.state;
+
+        const listCopy = list.slice();
+
+        listCopy.splice(index,1);
+
+        this.setState({
+            list: listCopy
         });
     }
 
@@ -35,7 +47,7 @@ class App extends Component {
             <div className="container">
                 <h1 className="center">Todo App</h1>
                 <AddItem add={this.addItem}/>
-                <List data={list}/>
+                <List data={list} delete={this.deleteItem}/>
             </div>
         );
     }
